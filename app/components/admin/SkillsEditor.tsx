@@ -90,7 +90,9 @@ const SkillsEditor = () => {
         if (skill.id) {
           await supabase.from("skills").update(skill).eq("id", skill.id);
         } else {
-          await supabase.from("skills").insert(skill);
+          // Don't include 'id' when inserting new skill
+          const { id, ...skillData } = skill;
+          await supabase.from("skills").insert(skillData);
         }
       }
       toast({

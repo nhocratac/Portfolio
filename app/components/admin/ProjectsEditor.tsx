@@ -146,7 +146,9 @@ const ProjectsEditor = () => {
             .update(project)
             .eq("id", project.id);
         } else {
-          await supabase.from("projects").insert(project);
+          // Don't include 'id' when inserting new project
+          const { id, ...projectData } = project;
+          await supabase.from("projects").insert(projectData);
         }
       }
       toast({
