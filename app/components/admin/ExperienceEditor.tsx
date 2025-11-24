@@ -37,7 +37,19 @@ const ExperienceEditor = () => {
       .from("experience")
       .select("*")
       .order("display_order", { ascending: true });
-    if (data) setExperiences(data);
+    if (data) {
+      const mappedExperiences = data.map(exp => ({
+        id: exp.id,
+        company: exp.company,
+        position: exp.position,
+        location: exp.location ?? undefined,
+        start_date: exp.start_date,
+        end_date: exp.end_date ?? undefined,
+        description: exp.description ?? undefined,
+        display_order: exp.display_order ?? 0,
+      }));
+      setExperiences(mappedExperiences);
+    }
   };
 
   const handleSave = async () => {

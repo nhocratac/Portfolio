@@ -1,13 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
-import { LogIn } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function HomePage() {
@@ -48,7 +45,7 @@ export default function HomePage() {
           <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-110 transition-transform duration-300">
             Portfolio
           </h1>
-          
+
           <div className="hidden md:flex items-center gap-6">
             {[
               { id: "home", label: "Trang chủ" },
@@ -60,21 +57,13 @@ export default function HomePage() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-all duration-300 hover:text-primary hover:scale-110 hover:-translate-y-0.5 ${
-                  activeSection === item.id ? "text-primary scale-105" : "text-muted-foreground"
-                }`}
+                className={`text-sm font-medium transition-all duration-300 hover:text-primary hover:scale-110 hover:-translate-y-0.5 ${activeSection === item.id ? "text-primary scale-105" : "text-muted-foreground"
+                  }`}
               >
                 {item.label}
               </button>
             ))}
           </div>
-
-          <Button asChild variant="outline" size="sm" className="hover:scale-110 hover:-translate-y-0.5 transition-all duration-300">
-            <Link href="/auth">
-              <LogIn className="h-4 w-4 mr-2" />
-              Admin
-            </Link>
-          </Button>
         </div>
       </nav>
 

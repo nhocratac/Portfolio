@@ -36,9 +36,26 @@ const About = () => {
       supabase.from("education").select("*").order("start_date", { ascending: false }),
       supabase.from("experience").select("*").order("start_date", { ascending: false }),
     ]);
-    
-    if (eduData.data) setEducation(eduData.data);
-    if (expData.data) setExperience(expData.data);
+
+    if (eduData.data) {
+      const mappedEducation = eduData.data.map(edu => ({
+        ...edu,
+        field_of_study: edu.field_of_study ?? undefined,
+        end_date: edu.end_date ?? undefined,
+        description: edu.description ?? undefined,
+      }));
+      setEducation(mappedEducation);
+    }
+
+    if (expData.data) {
+      const mappedExperience = expData.data.map(exp => ({
+        ...exp,
+        location: exp.location ?? undefined,
+        end_date: exp.end_date ?? undefined,
+        description: exp.description ?? undefined,
+      }));
+      setExperience(mappedExperience);
+    }
   };
 
   const formatDate = (date: string) => {
@@ -69,7 +86,7 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold">Kinh nghiệm làm việc</h3>
               </div>
-              
+
               <div className="relative space-y-6 before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
                 {experience.map((exp, index) => (
                   <Card
@@ -80,12 +97,12 @@ const About = () => {
                     <div className="absolute left-3 top-6 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg animate-scale-in" style={{ animationDelay: `${(index + 1) * 150}ms` }}>
                       <div className="w-3 h-3 rounded-full bg-primary-foreground" />
                     </div>
-                    
+
                     <CardContent className="pt-6">
                       <div className="space-y-2">
                         <h4 className="text-xl font-bold">{exp.position}</h4>
                         <p className="text-primary font-medium">{exp.company}</p>
-                        
+
                         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
@@ -100,7 +117,7 @@ const About = () => {
                             </div>
                           )}
                         </div>
-                        
+
                         {exp.description && (
                           <p className="text-muted-foreground mt-3 leading-relaxed">
                             {exp.description}
@@ -123,7 +140,7 @@ const About = () => {
                 </div>
                 <h3 className="text-2xl font-bold">Học vấn</h3>
               </div>
-              
+
               <div className="relative space-y-6 before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
                 {education.map((edu, index) => (
                   <Card
@@ -134,7 +151,7 @@ const About = () => {
                     <div className="absolute left-3 top-6 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg animate-scale-in" style={{ animationDelay: `${(index + 1) * 150}ms` }}>
                       <div className="w-3 h-3 rounded-full bg-primary-foreground" />
                     </div>
-                    
+
                     <CardContent className="pt-6">
                       <div className="space-y-2">
                         <h4 className="text-xl font-bold">{edu.degree}</h4>
@@ -142,14 +159,14 @@ const About = () => {
                           <p className="text-primary font-medium">{edu.field_of_study}</p>
                         )}
                         <p className="font-medium">{edu.institution}</p>
-                        
+
                         <div className="flex items-center gap-1 text-sm text-muted-foreground">
                           <Calendar className="h-4 w-4" />
                           <span>
                             {formatDate(edu.start_date)} - {edu.end_date ? formatDate(edu.end_date) : "Hiện tại"}
                           </span>
                         </div>
-                        
+
                         {edu.description && (
                           <p className="text-muted-foreground mt-3 leading-relaxed">
                             {edu.description}

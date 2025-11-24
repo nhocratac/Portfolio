@@ -37,7 +37,19 @@ const EducationEditor = () => {
       .from("education")
       .select("*")
       .order("display_order", { ascending: true });
-    if (data) setEducations(data);
+    if (data) {
+      const mappedEducations = data.map(edu => ({
+        id: edu.id,
+        institution: edu.institution,
+        degree: edu.degree,
+        field_of_study: edu.field_of_study ?? undefined,
+        start_date: edu.start_date,
+        end_date: edu.end_date ?? undefined,
+        description: edu.description ?? undefined,
+        display_order: edu.display_order ?? 0,
+      }));
+      setEducations(mappedEducations);
+    }
   };
 
   const handleSave = async () => {

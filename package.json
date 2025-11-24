@@ -1,6 +1,21 @@
 {
-  "name": "my-app",
+  "name": "portfolio-nhocratac",
   "version": "0.1.0",
+  "description": "Portfolio website của Nguyễn Việt Thắng (nhocratac) - Web Developer chuyên về Backend & Fullstack với Spring Boot, Node.js, Next.js",
+  "author": {
+    "name": "Nguyễn Việt Thắng",
+    "email": "nguyenvietthang010@gmail.com",
+    "url": "https://github.com/nhocratac"
+  },
+  "keywords": [
+    "portfolio",
+    "web-developer",
+    "backend",
+    "fullstack",
+    "nextjs",
+    "spring-boot",
+    "nodejs"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
