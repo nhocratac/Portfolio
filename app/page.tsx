@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
+import FeaturedBlogs from "@/components/FeaturedBlogs";
 import { useState, useEffect } from "react";
 
 export default function HomePage() {
@@ -52,6 +53,7 @@ export default function HomePage() {
               { id: "about", label: "Về tôi" },
               { id: "projects", label: "Dự án" },
               { id: "skills", label: "Kỹ năng" },
+              { id: "blog", label: "Blog" },
               { id: "contact", label: "Liên hệ" },
             ].map((item) => (
               <button
@@ -79,6 +81,9 @@ export default function HomePage() {
       <div id="skills">
         <Skills />
       </div>
+      <div id="blog">
+        <FeaturedBlogs />
+      </div>
       <div id="contact">
         <Contact />
       </div>
@@ -94,6 +99,7 @@ export default function HomePage() {
               { id: "about", label: "Về tôi" },
               { id: "projects", label: "Dự án" },
               { id: "skills", label: "Kỹ năng" },
+              { id: "blog", label: "Blog" },
               { id: "contact", label: "Liên hệ" },
             ].map((item) => (
               <button

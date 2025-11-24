@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@root/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LogOut, User, Briefcase, Award, Eye, GraduationCap, Building } from "lucide-react";
+import BlogEditor from "@/components/admin/BlogEditor";
+import { LogOut, User, Briefcase, Award, Eye, GraduationCap, Building, FileText } from "lucide-react";
 import ProfileEditor from "@/components/admin/ProfileEditor";
 import ProjectsEditor from "@/components/admin/ProjectsEditor";
 import SkillsEditor from "@/components/admin/SkillsEditor";
@@ -12,7 +13,7 @@ import EducationEditor from "@/components/admin/EducationEditor";
 import ExperienceEditor from "@/components/admin/ExperienceEditor";
 import { cn } from "@/lib/utils";
 
-type TabType = "profile" | "projects" | "skills" | "education" | "experience";
+type TabType = "profile" | "projects" | "skills" | "education" | "experience" | "blog";
 
 export default function AdminPage() {
   const [loading, setLoading] = useState(true);
@@ -69,6 +70,7 @@ export default function AdminPage() {
     { id: "experience" as TabType, label: "Kinh nghiệm", icon: Building },
     { id: "projects" as TabType, label: "Dự án", icon: Briefcase },
     { id: "skills" as TabType, label: "Kỹ năng", icon: Award },
+    { id: "blog" as TabType, label: "Blog", icon: FileText },
   ];
 
   return (
@@ -152,6 +154,7 @@ export default function AdminPage() {
               {activeTab === "experience" && <ExperienceEditor />}
               {activeTab === "projects" && <ProjectsEditor />}
               {activeTab === "skills" && <SkillsEditor />}
+              {activeTab === "blog" && <BlogEditor />}
             </div>
           </main>
         </div>

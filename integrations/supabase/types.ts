@@ -14,6 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          category: string | null
+          content: string
+          created_at: string
+          display_order: number | null
+          excerpt: string | null
+          featured_image: string | null
+          id: string
+          published_at: string | null
+          reading_time: number | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          status: "draft" | "published" | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+          user_id: string | null
+          views: number | null
+        }
+        Insert: {
+          category?: string | null
+          content: string
+          created_at?: string
+          display_order?: number | null
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          published_at?: string | null
+          reading_time?: number | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          status?: "draft" | "published" | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          user_id?: string | null
+          views?: number | null
+        }
+        Update: {
+          category?: string | null
+          content?: string
+          created_at?: string
+          display_order?: number | null
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          published_at?: string | null
+          reading_time?: number | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          status?: "draft" | "published" | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          user_id?: string | null
+          views?: number | null
+        }
+        Relationships: []
+      }
       education: {
         Row: {
           created_at: string

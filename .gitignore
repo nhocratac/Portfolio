@@ -42,3 +42,4 @@ next-env.d.ts
 
 note.txt
 supabase_schema.sql
+supabase_blog_migration.sql
