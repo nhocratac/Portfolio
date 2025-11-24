@@ -23,7 +23,15 @@ const Skills = () => {
       .select("*")
       .order("category")
       .order("display_order", { ascending: true });
-    if (data) setSkills(data);
+    if (data) {
+      const mappedSkills = data.map(skill => ({
+        id: skill.id,
+        name: skill.name,
+        category: skill.category,
+        level: skill.level ?? 0,
+      }));
+      setSkills(mappedSkills);
+    }
   };
 
   if (skills.length === 0) {

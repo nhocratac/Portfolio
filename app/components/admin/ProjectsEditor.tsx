@@ -49,7 +49,20 @@ const ProjectsEditor = () => {
         .from("projects")
         .select("*")
         .order("display_order", { ascending: true });
-      if (data) setProjects(data);
+      if (data) {
+        const mappedProjects = data.map(project => ({
+          id: project.id,
+          title: project.title,
+          description: project.description,
+          image_url: project.image_url || "",
+          demo_url: project.demo_url || "",
+          github_url: project.github_url || "",
+          technologies: project.technologies || [],
+          featured: project.featured ?? false,
+          display_order: project.display_order ?? 0,
+        }));
+        setProjects(mappedProjects);
+      }
     } finally {
       setLoading(false);
     }
@@ -106,7 +119,7 @@ const ProjectsEditor = () => {
             await supabase
               .from("projects")
               .update({ display_order: i })
-              .eq("id", newProjects[i].id);
+              .eq("id", newProjects[i].id!);
           }
         }
         toast({

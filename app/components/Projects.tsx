@@ -28,7 +28,19 @@ const Projects = () => {
       .from("projects")
       .select("*")
       .order("display_order", { ascending: true });
-    if (data) setProjects(data);
+    if (data) {
+      const mappedProjects = data.map(project => ({
+        id: project.id,
+        title: project.title,
+        description: project.description,
+        image_url: project.image_url ?? undefined,
+        demo_url: project.demo_url ?? undefined,
+        github_url: project.github_url ?? undefined,
+        technologies: project.technologies ?? [],
+        featured: project.featured ?? false,
+      }));
+      setProjects(mappedProjects);
+    }
   };
 
   if (projects.length === 0) {

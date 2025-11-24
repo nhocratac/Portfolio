@@ -43,7 +43,20 @@ const ProfileEditor = () => {
         .maybeSingle();
 
       if (data) {
-        setFormData(data);
+        // Map null values to empty strings to match formData type
+        setFormData({
+          full_name: data.full_name || "",
+          title: data.title || "",
+          bio: data.bio || "",
+          avatar_url: data.avatar_url || "",
+          email: data.email || "",
+          phone: data.phone || "",
+          location: data.location || "",
+          github_url: data.github_url || "",
+          linkedin_url: data.linkedin_url || "",
+          twitter_url: data.twitter_url || "",
+          website_url: data.website_url || "",
+        });
       }
     } finally {
       setLoading(false);

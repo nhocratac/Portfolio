@@ -26,7 +26,21 @@ const Hero = () => {
 
   const fetchProfile = async () => {
     const { data } = await supabase.from("profile").select("*").single();
-    if (data) setProfile(data);
+    if (data) {
+      setProfile({
+        full_name: data.full_name || "",
+        title: data.title || "",
+        bio: data.bio || "",
+        avatar_url: data.avatar_url ?? undefined,
+        email: data.email ?? undefined,
+        phone: data.phone ?? undefined,
+        location: data.location ?? undefined,
+        github_url: data.github_url ?? undefined,
+        linkedin_url: data.linkedin_url ?? undefined,
+        twitter_url: data.twitter_url ?? undefined,
+        website_url: data.website_url ?? undefined,
+      });
+    }
   };
 
   if (!profile) {
@@ -51,7 +65,7 @@ const Hero = () => {
             />
           </div>
         )}
-        
+
         <div className="space-y-4 animate-fade-in" style={{ animationDelay: "100ms" }}>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight hover:scale-105 transition-transform duration-300">
             {profile.full_name}
