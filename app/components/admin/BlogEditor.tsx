@@ -34,7 +34,7 @@ interface BlogPost {
     content: string;
     excerpt: string | null;
     category: string | null;
-    status: "draft" | "published";
+    status: "draft" | "published" | null;
     published_at: string | null;
 }
 
@@ -147,7 +147,12 @@ export default function BlogEditor() {
 
         try {
             const postData = {
-                ...formData,
+                title: formData.title,
+                slug: formData.slug,
+                content: formData.content,
+                excerpt: formData.excerpt || null,
+                category: formData.category || null,
+                status: formData.status || "draft",
                 published_at: formData.status === "published" ? new Date().toISOString() : null,
                 updated_at: new Date().toISOString(),
             };
@@ -215,8 +220,8 @@ export default function BlogEditor() {
                                         <TableCell>
                                             <span
                                                 className={`px-2 py-1 rounded-full text-xs ${post.status === "published"
-                                                        ? "bg-green-500/10 text-green-400"
-                                                        : "bg-yellow-500/10 text-yellow-400"
+                                                    ? "bg-green-500/10 text-green-400"
+                                                    : "bg-yellow-500/10 text-yellow-400"
                                                     }`}
                                             >
                                                 {post.status === "published" ? "Đã đăng" : "Nháp"}
@@ -302,7 +307,7 @@ export default function BlogEditor() {
                                 <Label htmlFor="status" className="text-zinc-300">Trạng thái</Label>
                                 <select
                                     id="status"
-                                    value={formData.status}
+                                    value={formData.status || "draft"}
                                     onChange={(e) => setFormData({ ...formData, status: e.target.value as "draft" | "published" })}
                                     className="w-full h-10 rounded-md border border-zinc-800 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-zinc-700"
                                 >

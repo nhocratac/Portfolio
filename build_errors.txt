@@ -1,0 +1,136 @@
+﻿
+> portfolio-nhocratac@0.1.0 build
+> next build
+
+   â–² Next.js 16.0.3 (Turbopack)
+   - Environments: .env
+
+   Creating an optimized production build ...
+ âœ“ Compiled successfully in 4.6s
+   Running TypeScript ...
+npm : Failed to 
+compile.
+At line:1 char:1
++ npm run build 2>&1 
+| Out-File -FilePath 
+build_errors.txt 
+-Encoding UT ...
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : 
+NotSpecified: (Faile 
+   d to 
+compile.:String) [   
+ ], RemoteException
+    + FullyQualifiedE
+rrorId     : 
+NativeCommandError
+ 
+
+./app/components/admi
+n/BlogEditor.tsx:70:3
+2
+Type error: Argument 
+of type '{ category: 
+string | null; 
+content: string; 
+created_at: string; 
+display_order: 
+number | null; 
+excerpt: string | 
+null; 
+featured_image: 
+string | null; id: 
+string; 
+published_at: string 
+| null; ... 9 more 
+...; views: number | 
+null; }[]' is not 
+assignable to 
+parameter of type 'Se
+tStateAction<BlogPost
+[]>'.
+  Type '{ category: 
+string | null; 
+content: string; 
+created_at: string; 
+display_order: 
+number | null; 
+excerpt: string | 
+null; 
+featured_image: 
+string | null; id: 
+string; 
+published_at: string 
+| null; ... 9 more 
+...; views: number | 
+null; }[]' is not 
+assignable to type 
+'BlogPost[]'.
+    Type '{ 
+category: string | 
+null; content: 
+string; created_at: 
+string; 
+display_order: 
+number | null; 
+excerpt: string | 
+null; 
+featured_image: 
+string | null; id: 
+string; 
+published_at: string 
+| null; ... 9 more 
+...; views: number | 
+null; }' is not 
+assignable to type 
+'BlogPost'.
+      Types of 
+property 'status' 
+are incompatible.
+        Type 
+'"draft" | 
+"published" | null' 
+is not assignable to 
+type '"draft" | 
+"published"'.
+          Type 
+'null' is not 
+assignable to type 
+'"draft" | 
+"published"'.
+
+[0m [90m 68 |[39m
+ [90m 69 |[39m     
+        [36mif[39m 
+(error) 
+[36mthrow[39m 
+error[33m;[39m
+[31m[1m>[22m[39m
+[90m 70 |[39m       
+      [36mif[39m 
+(data) setPosts(data)
+[33m;[39m
+ [90m    |[39m     
+                     
+      
+[31m[1m^[22m[39m
+ [90m 71 |[39m     
+    } 
+[36mcatch[39m 
+(error) {
+ [90m 72 |[39m     
+        console[33m.
+[39merror([32m"Erro
+r fetching posts:"[3
+9m[33m,[39m 
+error)[33m;[39m
+ [90m 73 |[39m     
+        toast[33m.[
+39merror([32m"KhĂ´ng
+ thá»ƒ táº£i danh 
+sĂ¡ch bĂi viáº¿t"[39
+m)[33m;[39m[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null
